@@ -5,12 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.starkindustries.jetpackcomposemark1.Frontend.Compose.TextCompose
 import com.starkindustries.jetpackcomposemark1.ui.theme.JetPackComposeMark1Theme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,29 +21,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetPackComposeMark1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
+
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     JetPackComposeMark1Theme {
-        Greeting("Android")
+        TextCompose(text = "Aditya")
     }
 }
