@@ -1,9 +1,16 @@
 package com.starkindustries.jetpackcomposemark1.Frontend.Compose
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -13,8 +20,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -42,7 +51,7 @@ fun ImageCompose(imageId:Int,modifier: Modifier){
     Image(painter= painterResource(id = imageId), contentDescription = null,
         modifier = modifier
             .fillMaxWidth()
-            .padding(10.dp, 20.dp,10.dp,0.dp),
+            .padding(10.dp, 20.dp, 10.dp, 0.dp),
         colorFilter = ColorFilter.tint(Color.Red)
     )
 }
@@ -74,14 +83,37 @@ fun TextFieldCompose(){
     }, label = {
         TextCompose(text = "Enter Name", modifier = Modifier)
     },
-        modifier = Modifier.fillMaxWidth().
-    padding(0.dp,200.dp))
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(0.dp, 200.dp))
 }
+
 @Composable
-@Preview(showSystemUi = true, showBackground = true)
-fun PreviewFunction(){
+fun CircularImamge(imageId:Int){
+    Image(painter = painterResource(id = imageId), contentDescription =null,
+        modifier = Modifier.clickable {  }.
+    size(200.dp).
+    background(Color.White).
+        border(2.dp,Color.Black, CircleShape).
+        clip(CircleShape)
+            .background(Color.Red)
+    )
+}
+
+fun Row(iamgeId:Int,username:String,sid:String){
+
+}
+
+@Composable
+fun MainComposible(){
     ImageCompose(imageId = R.drawable.batman,Modifier)
     TextCompose(text = "Aditya",Modifier)
     ButtonCompose()
     TextFieldCompose()
+}
+
+@Composable
+@Preview(showSystemUi = true, showBackground = true)
+fun PreviewFunction(){
+
 }
