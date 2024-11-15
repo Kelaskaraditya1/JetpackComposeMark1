@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.starkindustries.jetpackcomposemark1.Frontend.Compose.MainComposible
 import com.starkindustries.jetpackcomposemark1.Frontend.Compose.TextCompose
+import com.starkindustries.jetpackcomposemark1.Frontend.States.MainCompose
 import com.starkindustries.jetpackcomposemark1.ui.theme.JetPackComposeMark1Theme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetPackComposeMark1Theme {
-                MainComposible()
+                MainCompose()
             }
         }
     }

@@ -4,13 +4,19 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -33,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.starkindustries.jetpackcomposemark1.R
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import kotlin.coroutines.coroutineContext
 
 @Composable
@@ -89,19 +96,86 @@ fun TextFieldCompose(){
 }
 
 @Composable
-fun CircularImamge(imageId:Int){
+fun CircularImamge(imageId:Int,modifier: Modifier){
     Image(painter = painterResource(id = imageId), contentDescription =null,
-        modifier = Modifier.clickable {  }.
-    size(200.dp).
-    background(Color.White).
-        border(2.dp,Color.Black, CircleShape).
-        clip(CircleShape)
-            .background(Color.Red)
+        modifier = modifier
+            .clickable { }
+            .size(100.dp)
+            .border(2.dp, Color.Black, CircleShape)
+            .clip(CircleShape)
+            .background(Color.White)
     )
 }
 
-fun Row(iamgeId:Int,username:String,sid:String){
+@Composable
+fun RowCompose(imageId:Int,username:String){
+    Row(modifier = Modifier
+        .padding(5.dp)
+        .border(2.dp, Color.Black, RectangleShape)
+        .fillMaxWidth()
+        .background(Color.Gray)
+    ) {
+        CircularImamge(imageId = imageId,
+            Modifier
+                .padding(10.dp)
+                .align(Alignment.CenterVertically))
+        Text(text = username,
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.CenterVertically)
+                .padding(10.dp, 0.dp, 0.dp, 0.dp),
+            fontSize = 20.sp)
+    }
+}
 
+@Composable
+fun ColumnCompose(){
+Column(modifier = Modifier.verticalScroll(rememberScrollState())
+) {
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+    UserCompose(imageId = R.drawable.batman, username = "kelaskaraditya1", sid ="2021FHCO042" )
+
+
+}
+}
+
+@Composable
+fun UserCompose(imageId:Int,username:String,sid:String){
+    Row(modifier = Modifier
+        .padding(5.dp)
+        .fillMaxWidth().
+            background(Color.LightGray)
+        .border(2.dp, Color.Black, RoundedCornerShape(10.dp))
+        .padding(10.dp)){
+        CircularImamge(imageId = imageId, modifier = Modifier)
+        Column(modifier = Modifier.align(Alignment.CenterVertically)) {
+            Text(text = username,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(0.dp, 0.dp, 15.dp, 0.dp),
+                textAlign = TextAlign.Center,
+                fontSize = 23.sp,
+                fontWeight = FontWeight.SemiBold)
+            Text(text = sid,
+                fontSize = 17.sp,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.W500
+                )
+        }
+    }
 }
 
 @Composable
@@ -115,5 +189,5 @@ fun MainComposible(){
 @Composable
 @Preview(showSystemUi = true, showBackground = true)
 fun PreviewFunction(){
-
+    ColumnCompose()
 }
